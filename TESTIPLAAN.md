@@ -1,9 +1,5 @@
 # SÜSTEEMI TESTIPLAAN
 
-**Grupp:** TAK25  
-**Kuupäev:** 12.06.2026  
-**Koostaja:** [Sinu nimi]
-
 ---
 
 ## 1. RAKENDUSE KIRJELDUS
