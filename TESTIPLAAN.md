@@ -79,8 +79,3 @@ Raamatukogu Laenutussüsteemi testiplaan on koostatud vastavalt hindamiskriteeri
 - **Turvalisuse** – kasutajate andmete eraldamine
 
 Nende testide abil saab hinnata, kas rakendus töötab korrektselt, annab arusaadavaid veateateid ja kaitseb kasutajate andmeid.
-
----
-
-**Koostaja allkiri:** _________________________  
-**Kuupäev:** 12.06.2026
