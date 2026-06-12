@@ -1,7 +1,5 @@
 # SÜSTEEMI TESTIPLAAN
 
----
-
 ## 1. RAKENDUSE KIRJELDUS
 
 ### 1.1 Rakenduse nimi
