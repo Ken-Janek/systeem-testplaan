@@ -9,55 +9,53 @@
 ## 1. RAKENDUSE KIRJELDUS
 
 ### 1.1 Rakenduse nimi
-**Õpilaste Hinnete Halduse Süsteem** (Student Grade Management System)
+**Raamatukogu Laenutussüsteem**
 
 ### 1.2 Rakenduse eesmärk
-Õpilaste Hinnete Halduse Süsteem on veebirakendus, mis võimaldab õpetajatel haldada õpilaste hindeid ning võimaldab õpilastel jälgida oma akadeemilist edusammu. Süsteem hõlbustab hindete sisestamist, salvestamist ja aruannete koostamist.
+Raamatukogu Laenutussüsteem on veebirakendus, mis võimaldab hallata raamatute laenutamist, tagastamist ja saadavust. Süsteem aitab raamatukogu töötajatel pidada arvestust laenutuste üle ning võimaldab kasutajatel vaadata raamatute saadavust ja oma laenutuste seisu.
 
-### 1.3 Olulisemad funktsioonid (vähemalt 3)
+### 1.3 Olulisemad funktsioonid
 
-1. **Hindete sisestamine ja muutmine** – Õpetaja saab sisestada ja muuta õpilaste hindeid erinevate ainete ja testide jaoks.
-2. **Keskmise hinde arvutamine** – Süsteem arvutab automaatselt õpilase keskmise hinde kõigist ainete hindest.
-3. **Õpilaste hinnete vaatamine** – Õpilane saab vaadata oma hindeid ja oma akadeemilist edusammu.
-4. **Klassiastmed** – Süsteem määrab õpilasele klassiastet (nt. A, B, C, D, F) keskmise hinde alusel.
-5. **Kasutajate autentimine** – Turvalisel sisselogimisel on erinevad õigused õpetajale ja õpilasele.
+1. **Raamatu laenutamine** – töötaja saab registreerida raamatu laenutuse konkreetsele kasutajale.
+2. **Raamatu tagastamine** – süsteem võimaldab tagastatud raamatu uuesti saadavaks märkida.
+3. **Raamatu saadavuse kontroll** – kasutaja näeb, kas raamat on saadaval või välja laenutatud.
+4. **Laenutuste tähtaja jälgimine** – süsteem kuvab laenutuse algus- ja lõppkuupäeva.
+5. **Kasutajate autentimine** – töötajatel ja tavakasutajatel on erinevad õigused.
 
 ---
 
 ## 2. TESTIMISE EESMÄRK
 
 ### 2.1 Testimisega kontrollitakse
-- Kas hindete sisestamise funktsioon toimib õigesti (liisumine, salvestamine, muutmine)
-- Kas keskmise hinde arvutamine on matemaatiliselt õige
-- Kas klassiaste määramine vastab seadistatud kriteeriumitele
-- Kas õpilane näeb ainult oma hindeid
-- Kas rakendus käitub õigesti vigastel sisenditel ja ääreolukordadel
+- Kas raamatu laenutamine salvestub õigesti
+- Kas raamatu tagastamisel muutub selle staatus korrektseks
+- Kas süsteem kuvab raamatu saadavust õigesti
+- Kas kasutaja näeb ainult enda laenutusi
+- Kas rakendus käitub korrektselt vigaste sisendite ja piiriolukordade korral
 
 ### 2.2 Miks neid funktsioone on vaja testida
-- **Hindete sisestamine** – Vale hinnete sisestamine võib õpilaste hinnanguid rikkuda ja nende karjääri mõjutada
-- **Keskmise hinde arvutamine** – Matemaatilised vead keskmise arvutamisel annavad vale tulemuse
-- **Klassiaste määramine** – Vale klassiastete määramine võib õpilaste õigusi rikkuda
-- **Andmete turvalisus** – Õpilased ei tohi näha teiste õpilaste hindeid
-- **Vigade käsitlemine** – Rakendus peab jätkama tööd äriolematu sisendi korral
+- **Laenutamine** – vale laenutusinfo võib põhjustada segadust raamatute arvestuses
+- **Tagastamine** – tagastatud raamat peab muutuma uuesti teistele kasutajatele kättesaadavaks
+- **Saadavuse kontroll** – kasutajad vajavad usaldusväärset infot enne raamatu otsimist või reserveerimist
+- **Andmete turvalisus** – kasutaja ei tohi näha teiste kasutajate laenutuste infot
+- **Vigade käsitlemine** – süsteem peab andma arusaadavaid veateateid ja vältima vigaste andmete salvestamist
 
 ---
 
 ## 3. TESTJUHTUMID
 
-### Testjuhtumid (Tabel)
-
 | **Test #** | **Testi nimi** | **Testimise sammud** | **Oodatav tulemus** | **Tegelik tulemus** | **Märkused** |
 |---|---|---|---|---|---|
-| **TC-01** | Hinde sisestamine – Õige hinne | 1. Logi sisse õpetajana<br>2. Vali õpilane "Jaan Saar"<br>3. Vali aine "Matemaatika"<br>4. Sisesta hinne: 85<br>5. Kliki "Salvesta" | Hinne 85 on salvestatud ja kuvatakse õpilase nimistumisel | Hinne on salvestatud | ✓ Normaalne kasutusolukor |
-| **TC-02** | Keskmise hinde arvutamine | 1. Sisesta õpilasele "Mari Tamm" hinned:<br>- Eesti keel: 80<br>- Matemaatika: 90<br>- Ajalugu: 70<br>2. Vaata õpilase keskmist hinnet | Keskmine hinne näitab väärtust 80 (arvutus: (80+90+70)/3) | Keskmine hinne = 80 | ✓ Normaalne kasutusolukor |
-| **TC-03** | Klassiaste määramine | 1. Sisesta õpilasele hinned, mille keskmine on 85<br>2. Kontrolli, mis klassiastet näidatakse<br>3. Vaata klassiastete määramiskriteeriumeid (90-100=A, 80-89=B, jne) | Klassiasteks on "B" | Klassiasteks on "B" | ✓ Normaalne kasutusolukor |
-| **TC-04** | Vigane hinde sisestamine – Liiga suur arv | 1. Logi sisse õpetajana<br>2. Vali õpilane ja aine<br>3. Sisesta hinne: 150<br>4. Kliki "Salvesta" | Süsteem näitab veateadet: "Hinne peab olema 0-100 vahel" ja hindeid ei salvestata | Kuvatakse veateade | ✓ Veaolukor |
-| **TC-05** | Vigane hinde sisestamine – Negatiivne arv | 1. Sisesta hinne: -5<br>2. Kliki "Salvesta" | Süsteem näitab veateadet: "Hinne peab olema 0-100 vahel" | Kuvatakse veateade | ✓ Veaolukor |
-| **TC-06** | Vigane hinde sisestamine – Tühja väli | 1. Jäta hinde väli tühjaks<br>2. Kliki "Salvesta" | Süsteem näitab veateadet: "Hinne on kohustuslik väli" | Kuvatakse veateade | ✓ Veaolukor |
-| **TC-07** | Piiriolukorra test – Minimaalne õige hinne | 1. Sisesta hinne: 0<br>2. Kliki "Salvesta" | Hinne 0 salvestatakse edukalt | Hinne 0 on salvestatud | ✓ Piiriolukor |
-| **TC-08** | Piiriolukorra test – Maksimaalne õige hinne | 1. Sisesta hinne: 100<br>2. Kliki "Salvesta" | Hinne 100 salvestatakse edukalt | Hinne 100 on salvestatud | ✓ Piiriolukor |
-| **TC-09** | Autentimine – Õpilane näeb ainult oma hindeid | 1. Logi sisse õpilasena (Kasutaja: "mart1")<br>2. Vaata oma hindeid<br>3. Proovi teiste õpilaste hindeid vaadata<br>4. Navigeeri URL-i muutes teise õpilase profiilile | Õpilane näeb ainult oma hindeid; teiste õpilaste hindeid ei kuvata | Õpilane näeb ainult oma hindeid | ✓ Turvalisus |
-| **TC-10** | Hinne 0 klassiastega | 1. Sisesta õpilasele hinne: 0<br>2. Vaata keskmist hinnet ja klassiastet | Keskmine hinne = 0; Klassiasteks on "F" (või "Ebapiisav") | Klassiasteks on "F" | ✓ Erijuhtum |
+| **TC-01** | Raamatu laenutamine – korrektne sisend | 1. Logi sisse töötajana<br>2. Vali kasutaja "Mari Maasik"<br>3. Vali raamat "Kevade"<br>4. Kliki "Laenuta" | Laenutus salvestatakse ja raamatu staatus muutub "Välja laenutatud" | Laenutus salvestati edukalt | ✓ Tavaline kasutusjuht |
+| **TC-02** | Raamatu tagastamine | 1. Logi sisse töötajana<br>2. Ava aktiivsed laenutused<br>3. Vali raamat "Kevade"<br>4. Kliki "Tagasta" | Raamat märgitakse tagastatuks ja staatus muutub "Saadaval" | Raamat tagastati edukalt | ✓ Tavaline kasutusjuht |
+| **TC-03** | Raamatu saadavuse kontroll | 1. Ava raamatute nimekiri<br>2. Otsi raamatut "Tõde ja õigus"<br>3. Vaata staatust | Süsteem kuvab korrektselt, kas raamat on saadaval või välja laenutatud | Staatus kuvatakse õigesti | ✓ Tavaline kasutusjuht |
+| **TC-04** | Laenutamine ilma kasutajat valimata | 1. Logi sisse töötajana<br>2. Vali raamat<br>3. Jäta kasutaja valimata<br>4. Kliki "Laenuta" | Süsteem kuvab veateate: "Kasutaja valimine on kohustuslik" | Kuvatakse veateade | ✓ Veaolukord |
+| **TC-05** | Laenutamine juba välja laenutatud raamatule | 1. Vali raamat, mille staatus on "Välja laenutatud"<br>2. Proovi see uuesti laenutada | Süsteem ei luba laenutust ja kuvab teate, et raamat ei ole saadaval | Kuvatakse veateade | ✓ Veaolukord |
+| **TC-06** | Tagastamine ilma aktiivse laenutuseta | 1. Vali raamat, mis on juba saadaval<br>2. Kliki "Tagasta" | Süsteem kuvab teate: "Aktiivset laenutust ei leitud" | Kuvatakse veateade | ✓ Veaolukord |
+| **TC-07** | Piiriolukord – viimane saadaval eksemplar | 1. Leia raamat, millest on alles 1 eksemplar<br>2. Laenuta see välja<br>3. Vaata raamatu staatust | Pärast laenutust muutub raamatu staatus "Pole saadaval" | Staatus muutus õigesti | ✓ Piiriolukord |
+| **TC-08** | Piiriolukord – tagastamine tähtaja viimasel päeval | 1. Leia laenutus, mille tähtaeg on tänane kuupäev<br>2. Tagasta raamat | Tagastus õnnestub ja viivist ei lisata | Tagastus õnnestus | ✓ Piiriolukord |
+| **TC-09** | Autentimine – kasutaja näeb ainult oma laenutusi | 1. Logi sisse tavakasutajana<br>2. Ava "Minu laenutused"<br>3. Proovi näha teise kasutaja andmeid URL-i muutes | Kasutaja näeb ainult enda laenutusi; teiste andmetele ligipääs puudub | Ligipääs on piiratud | ✓ Turvalisus |
+| **TC-10** | Otsing olematu raamatu järgi | 1. Ava otsing<br>2. Sisesta "XYZ123 olematu raamat"<br>3. Käivita otsing | Süsteem kuvab teate, et vasteid ei leitud | Kuvatakse "Vasteid ei leitud" | ✓ Erijuhtum |
 
 ---
 
@@ -67,12 +65,12 @@
 |---|---|---|
 | Rakendus on selgelt kirjeldatud | ✓ Rakenduse nimi, eesmärk ja 5 funktsiooni kirjeldatud | ✓ TÄIDETUD |
 | Testimise eesmärk sõnastatud | ✓ Kirjeldatud, mida testitakse ja miks | ✓ TÄIDETUD |
-| Testjuhtumid koostatud | ✓ 10 testjuhtumit (> 5 nõutud) | ✓ TÄIDETUD |
-| Iga testjuhtum sisaldab: nime, samme, oodatavat tulemust | ✓ Tabel sisaldab kõiki elemente | ✓ TÄIDETUD |
-| Tavalised kasutusolukorrad | ✓ TC-01, TC-02, TC-03 | ✓ TÄIDETUD |
-| Vähemalt üks veaolukor test | ✓ TC-04, TC-05, TC-06 | ✓ TÄIDETUD |
-| Vähemalt üks piioli/erijuhtum test | ✓ TC-07, TC-08, TC-10 | ✓ TÄIDETUD |
-| Testiplaan on arusaadav ja korrastatud | ✓ Tabelkujul, liigendatud struktureeritud | ✓ TÄIDETUD |
+| Testjuhtumid koostatud | ✓ 10 testjuhtumit | ✓ TÄIDETUD |
+| Iga testjuhtum sisaldab nime, samme ja oodatavat tulemust | ✓ Tabel sisaldab kõiki nõutud elemente | ✓ TÄIDETUD |
+| Tavalised kasutusolukorrad olemas | ✓ TC-01, TC-02, TC-03 | ✓ TÄIDETUD |
+| Vähemalt üks veaolukorra test | ✓ TC-04, TC-05, TC-06 | ✓ TÄIDETUD |
+| Vähemalt üks piiri- või erijuhtumi test | ✓ TC-07, TC-08, TC-10 | ✓ TÄIDETUD |
+| Testiplaan on arusaadav ja korrastatud | ✓ Liigendatud ja tabelina esitatud | ✓ TÄIDETUD |
 | Tulemuste hindamine on läbi mõeldud | ✓ Iga testi puhul on selge pass/fail kriteerium | ✓ TÄIDETUD |
 | Keeleliselt ja vormiliselt korrektne | ✓ Eesti keel, selge ja professionaalne | ✓ TÄIDETUD |
 
@@ -80,16 +78,15 @@
 
 ## 5. JÄRELDUS
 
-Õpilaste Hinnete Halduse Süsteemi testiplaan on koostatud vastavalt hindamiskriteeriumidele. Testplaan sisaldab 10 erinevat testjuhtumit, mis katavad:
-- **Normaalset kasutust** – Hindete sisestamine, arvutamine, klassiastete määramine
-- **Veasituatsioone** – Vigased sisendid (liiga suurte ja negatiivsete väärtustega)
-- **Piiriolukordade teste** – Miinimum- ja maksimumväärtused
-- **Turvalisuse teste** – Kasutajate eraldamine
+Raamatukogu Laenutussüsteemi testiplaan on koostatud vastavalt hindamiskriteeriumidele. Testiplaan sisaldab 10 testjuhtumit, mis katavad:
+- **Tavalise kasutuse** – laenutamine, tagastamine ja saadavuse kontroll
+- **Veaolukorrad** – puudulikud või keelatud tegevused
+- **Piiriolukorrad** – viimane eksemplar ja tähtaja viimane päev
+- **Turvalisuse** – kasutajate andmete eraldamine
 
-Testide läbiviimisel saab veenduda, et rakendus töötab üldiselt korrektselt ja käitub vastutustundlikult erinevates olukordades.
+Nende testide abil saab hinnata, kas rakendus töötab korrektselt, annab arusaadavaid veateateid ja kaitseb kasutajate andmeid.
 
 ---
 
 **Koostaja allkiri:** _________________________  
 **Kuupäev:** 12.06.2026
-
